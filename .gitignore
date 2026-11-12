@@ -1,0 +1,25 @@
+# Local outputs and caches are not release inputs.
+__pycache__/
+*.py[cod]
+.venv/
+runs/
+validation/
+.pytest_cache/
+.DS_Store
+
+# Secondary safeguards only. The exact release manifest remains authoritative.
+.env
+.env.*
+*.pem
+*.key
+patient_data/
+**/patient_data/
+human*/
+**/human*/
+*s530*
+*s523*
+*.log
+private_review/
+UPLOAD_REVIEW.txt
+UPLOAD_FILE_LIST.txt
+SOURCE_PROVENANCE.json

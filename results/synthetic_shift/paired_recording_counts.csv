@@ -1,0 +1,301 @@
+trial,method,baseline,surrogate01,surrogate02,shift_mean,change_in_counts
+1,HNRS 8/5/3% (2+ regions),8,0,0,0,-8
+1,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+1,Network-CMA 0.25 SD (population events),18,31,32,31.5,13.5
+1,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+1,Network-CMA 1.25 SD (population events),18,33,34,33.5,15.5
+2,HNRS 8/5/3% (2+ regions),10,0,0,0,-10
+2,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+2,Network-CMA 0.25 SD (population events),18,31,30,30.5,12.5
+2,Network-CMA 1.25 SD (2+ regions),7,0,0,0,-7
+2,Network-CMA 1.25 SD (population events),21,33,32,32.5,11.5
+3,HNRS 8/5/3% (2+ regions),8,0,0,0,-8
+3,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+3,Network-CMA 0.25 SD (population events),19,32,33,32.5,13.5
+3,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+3,Network-CMA 1.25 SD (population events),21,37,38,37.5,16.5
+4,HNRS 8/5/3% (2+ regions),5,0,0,0,-5
+4,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+4,Network-CMA 0.25 SD (population events),18,31,30,30.5,12.5
+4,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+4,Network-CMA 1.25 SD (population events),21,33,32,32.5,11.5
+5,HNRS 8/5/3% (2+ regions),6,0,0,0,-6
+5,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+5,Network-CMA 0.25 SD (population events),19,31,32,31.5,12.5
+5,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+5,Network-CMA 1.25 SD (population events),16,27,27,27,11
+6,HNRS 8/5/3% (2+ regions),7,0,0,0,-7
+6,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+6,Network-CMA 0.25 SD (population events),18,32,35,33.5,15.5
+6,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+6,Network-CMA 1.25 SD (population events),18,29,31,30,12
+7,HNRS 8/5/3% (2+ regions),9,0,0,0,-9
+7,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+7,Network-CMA 0.25 SD (population events),21,35,35,35,14
+7,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+7,Network-CMA 1.25 SD (population events),20,37,37,37,17
+8,HNRS 8/5/3% (2+ regions),7,0,0,0,-7
+8,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+8,Network-CMA 0.25 SD (population events),18,34,34,34,16
+8,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+8,Network-CMA 1.25 SD (population events),18,32,32,32,14
+9,HNRS 8/5/3% (2+ regions),6,0,0,0,-6
+9,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+9,Network-CMA 0.25 SD (population events),20,34,34,34,14
+9,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+9,Network-CMA 1.25 SD (population events),16,27,27,27,11
+10,HNRS 8/5/3% (2+ regions),8,0,0,0,-8
+10,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+10,Network-CMA 0.25 SD (population events),18,31,31,31,13
+10,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+10,Network-CMA 1.25 SD (population events),19,36,36,36,17
+11,HNRS 8/5/3% (2+ regions),8,0,0,0,-8
+11,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+11,Network-CMA 0.25 SD (population events),18,32,30,31,13
+11,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+11,Network-CMA 1.25 SD (population events),18,33,31,32,14
+12,HNRS 8/5/3% (2+ regions),8,0,0,0,-8
+12,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+12,Network-CMA 0.25 SD (population events),20,32,30,31,11
+12,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+12,Network-CMA 1.25 SD (population events),24,32,30,31,7
+13,HNRS 8/5/3% (2+ regions),7,0,0,0,-7
+13,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+13,Network-CMA 0.25 SD (population events),19,33,33,33,14
+13,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+13,Network-CMA 1.25 SD (population events),18,32,32,32,14
+14,HNRS 8/5/3% (2+ regions),6,0,0,0,-6
+14,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+14,Network-CMA 0.25 SD (population events),18,34,31,32.5,14.5
+14,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+14,Network-CMA 1.25 SD (population events),18,32,29,30.5,12.5
+15,HNRS 8/5/3% (2+ regions),7,0,0,0,-7
+15,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+15,Network-CMA 0.25 SD (population events),19,32,31,31.5,12.5
+15,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+15,Network-CMA 1.25 SD (population events),18,31,30,30.5,12.5
+16,HNRS 8/5/3% (2+ regions),12,0,0,0,-12
+16,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+16,Network-CMA 0.25 SD (population events),19,31,31,31,12
+16,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+16,Network-CMA 1.25 SD (population events),23,34,33,33.5,10.5
+17,HNRS 8/5/3% (2+ regions),4,0,0,0,-4
+17,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+17,Network-CMA 0.25 SD (population events),18,31,33,32,14
+17,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+17,Network-CMA 1.25 SD (population events),18,33,35,34,16
+18,HNRS 8/5/3% (2+ regions),6,0,0,0,-6
+18,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+18,Network-CMA 0.25 SD (population events),18,32,31,31.5,13.5
+18,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+18,Network-CMA 1.25 SD (population events),19,32,31,31.5,12.5
+19,HNRS 8/5/3% (2+ regions),12,0,0,0,-12
+19,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+19,Network-CMA 0.25 SD (population events),19,30,30,30,11
+19,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+19,Network-CMA 1.25 SD (population events),26,34,34,34,8
+20,HNRS 8/5/3% (2+ regions),4,0,0,0,-4
+20,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+20,Network-CMA 0.25 SD (population events),18,31,31,31,13
+20,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+20,Network-CMA 1.25 SD (population events),18,28,28,28,10
+21,HNRS 8/5/3% (2+ regions),7,0,0,0,-7
+21,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+21,Network-CMA 0.25 SD (population events),19,32,32,32,13
+21,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+21,Network-CMA 1.25 SD (population events),20,35,35,35,15
+22,HNRS 8/5/3% (2+ regions),7,0,0,0,-7
+22,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+22,Network-CMA 0.25 SD (population events),20,31,31,31,11
+22,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+22,Network-CMA 1.25 SD (population events),19,32,34,33,14
+23,HNRS 8/5/3% (2+ regions),8,0,0,0,-8
+23,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+23,Network-CMA 0.25 SD (population events),18,31,31,31,13
+23,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+23,Network-CMA 1.25 SD (population events),17,32,32,32,15
+24,HNRS 8/5/3% (2+ regions),6,0,0,0,-6
+24,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+24,Network-CMA 0.25 SD (population events),18,31,31,31,13
+24,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+24,Network-CMA 1.25 SD (population events),22,37,37,37,15
+25,HNRS 8/5/3% (2+ regions),8,0,0,0,-8
+25,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+25,Network-CMA 0.25 SD (population events),19,32,31,31.5,12.5
+25,Network-CMA 1.25 SD (2+ regions),7,0,0,0,-7
+25,Network-CMA 1.25 SD (population events),22,35,34,34.5,12.5
+26,HNRS 8/5/3% (2+ regions),8,0,0,0,-8
+26,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+26,Network-CMA 0.25 SD (population events),18,31,32,31.5,13.5
+26,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+26,Network-CMA 1.25 SD (population events),18,30,31,30.5,12.5
+27,HNRS 8/5/3% (2+ regions),6,0,0,0,-6
+27,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+27,Network-CMA 0.25 SD (population events),18,30,31,30.5,12.5
+27,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+27,Network-CMA 1.25 SD (population events),19,33,34,33.5,14.5
+28,HNRS 8/5/3% (2+ regions),8,0,0,0,-8
+28,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+28,Network-CMA 0.25 SD (population events),18,34,34,34,16
+28,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+28,Network-CMA 1.25 SD (population events),18,34,34,34,16
+29,HNRS 8/5/3% (2+ regions),7,0,0,0,-7
+29,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+29,Network-CMA 0.25 SD (population events),18,32,31,31.5,13.5
+29,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+29,Network-CMA 1.25 SD (population events),18,33,32,32.5,14.5
+30,HNRS 8/5/3% (2+ regions),6,0,0,0,-6
+30,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+30,Network-CMA 0.25 SD (population events),20,34,34,34,14
+30,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+30,Network-CMA 1.25 SD (population events),23,39,39,39,16
+31,HNRS 8/5/3% (2+ regions),8,0,0,0,-8
+31,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+31,Network-CMA 0.25 SD (population events),20,33,33,33,13
+31,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+31,Network-CMA 1.25 SD (population events),18,33,33,33,15
+32,HNRS 8/5/3% (2+ regions),7,0,0,0,-7
+32,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+32,Network-CMA 0.25 SD (population events),18,31,32,31.5,13.5
+32,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+32,Network-CMA 1.25 SD (population events),26,36,38,37,11
+33,HNRS 8/5/3% (2+ regions),7,0,0,0,-7
+33,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+33,Network-CMA 0.25 SD (population events),18,32,32,32,14
+33,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+33,Network-CMA 1.25 SD (population events),18,33,33,33,15
+34,HNRS 8/5/3% (2+ regions),6,0,0,0,-6
+34,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+34,Network-CMA 0.25 SD (population events),18,33,32,32.5,14.5
+34,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+34,Network-CMA 1.25 SD (population events),19,32,31,31.5,12.5
+35,HNRS 8/5/3% (2+ regions),7,0,0,0,-7
+35,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+35,Network-CMA 0.25 SD (population events),19,31,31,31,12
+35,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+35,Network-CMA 1.25 SD (population events),18,31,31,31,13
+36,HNRS 8/5/3% (2+ regions),5,0,0,0,-5
+36,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+36,Network-CMA 0.25 SD (population events),18,32,30,31,13
+36,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+36,Network-CMA 1.25 SD (population events),19,37,33,35,16
+37,HNRS 8/5/3% (2+ regions),6,0,0,0,-6
+37,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+37,Network-CMA 0.25 SD (population events),18,32,32,32,14
+37,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+37,Network-CMA 1.25 SD (population events),18,35,35,35,17
+38,HNRS 8/5/3% (2+ regions),11,0,0,0,-11
+38,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+38,Network-CMA 0.25 SD (population events),18,31,31,31,13
+38,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+38,Network-CMA 1.25 SD (population events),23,33,33,33,10
+39,HNRS 8/5/3% (2+ regions),5,0,0,0,-5
+39,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+39,Network-CMA 0.25 SD (population events),19,32,32,32,13
+39,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+39,Network-CMA 1.25 SD (population events),16,27,27,27,11
+40,HNRS 8/5/3% (2+ regions),7,0,0,0,-7
+40,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+40,Network-CMA 0.25 SD (population events),18,32,32,32,14
+40,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+40,Network-CMA 1.25 SD (population events),15,26,26,26,11
+41,HNRS 8/5/3% (2+ regions),8,0,0,0,-8
+41,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+41,Network-CMA 0.25 SD (population events),18,33,34,33.5,15.5
+41,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+41,Network-CMA 1.25 SD (population events),18,31,32,31.5,13.5
+42,HNRS 8/5/3% (2+ regions),7,0,0,0,-7
+42,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+42,Network-CMA 0.25 SD (population events),18,30,32,31,13
+42,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+42,Network-CMA 1.25 SD (population events),19,31,33,32,13
+43,HNRS 8/5/3% (2+ regions),9,0,0,0,-9
+43,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+43,Network-CMA 0.25 SD (population events),18,32,33,32.5,14.5
+43,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+43,Network-CMA 1.25 SD (population events),20,31,32,31.5,11.5
+44,HNRS 8/5/3% (2+ regions),8,0,0,0,-8
+44,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+44,Network-CMA 0.25 SD (population events),18,32,29,30.5,12.5
+44,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+44,Network-CMA 1.25 SD (population events),19,34,31,32.5,13.5
+45,HNRS 8/5/3% (2+ regions),7,0,0,0,-7
+45,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+45,Network-CMA 0.25 SD (population events),18,29,30,29.5,11.5
+45,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+45,Network-CMA 1.25 SD (population events),18,30,31,30.5,12.5
+46,HNRS 8/5/3% (2+ regions),7,0,0,0,-7
+46,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+46,Network-CMA 0.25 SD (population events),18,31,32,31.5,13.5
+46,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+46,Network-CMA 1.25 SD (population events),18,35,36,35.5,17.5
+47,HNRS 8/5/3% (2+ regions),7,0,0,0,-7
+47,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+47,Network-CMA 0.25 SD (population events),19,33,31,32,13
+47,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+47,Network-CMA 1.25 SD (population events),20,33,30,31.5,11.5
+48,HNRS 8/5/3% (2+ regions),8,0,0,0,-8
+48,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+48,Network-CMA 0.25 SD (population events),20,33,32,32.5,12.5
+48,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+48,Network-CMA 1.25 SD (population events),23,38,37,37.5,14.5
+49,HNRS 8/5/3% (2+ regions),8,0,0,0,-8
+49,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+49,Network-CMA 0.25 SD (population events),18,32,32,32,14
+49,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+49,Network-CMA 1.25 SD (population events),22,32,32,32,10
+50,HNRS 8/5/3% (2+ regions),7,0,0,0,-7
+50,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+50,Network-CMA 0.25 SD (population events),18,32,33,32.5,14.5
+50,Network-CMA 1.25 SD (2+ regions),7,0,0,0,-7
+50,Network-CMA 1.25 SD (population events),21,41,42,41.5,20.5
+51,HNRS 8/5/3% (2+ regions),8,0,0,0,-8
+51,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+51,Network-CMA 0.25 SD (population events),18,33,32,32.5,14.5
+51,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+51,Network-CMA 1.25 SD (population events),18,32,31,31.5,13.5
+52,HNRS 8/5/3% (2+ regions),9,0,0,0,-9
+52,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+52,Network-CMA 0.25 SD (population events),19,34,34,34,15
+52,Network-CMA 1.25 SD (2+ regions),7,0,0,0,-7
+52,Network-CMA 1.25 SD (population events),23,36,36,36,13
+53,HNRS 8/5/3% (2+ regions),11,0,0,0,-11
+53,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+53,Network-CMA 0.25 SD (population events),18,30,32,31,13
+53,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+53,Network-CMA 1.25 SD (population events),20,31,33,32,12
+54,HNRS 8/5/3% (2+ regions),8,0,0,0,-8
+54,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+54,Network-CMA 0.25 SD (population events),18,32,30,31,13
+54,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+54,Network-CMA 1.25 SD (population events),19,30,32,31,12
+55,HNRS 8/5/3% (2+ regions),7,0,0,0,-7
+55,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+55,Network-CMA 0.25 SD (population events),19,32,32,32,13
+55,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+55,Network-CMA 1.25 SD (population events),18,32,32,32,14
+56,HNRS 8/5/3% (2+ regions),8,0,0,0,-8
+56,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+56,Network-CMA 0.25 SD (population events),19,30,33,31.5,12.5
+56,Network-CMA 1.25 SD (2+ regions),7,0,0,0,-7
+56,Network-CMA 1.25 SD (population events),22,37,42,39.5,17.5
+57,HNRS 8/5/3% (2+ regions),7,0,0,0,-7
+57,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+57,Network-CMA 0.25 SD (population events),19,32,32,32,13
+57,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+57,Network-CMA 1.25 SD (population events),20,38,38,38,18
+58,HNRS 8/5/3% (2+ regions),6,0,0,0,-6
+58,Network-CMA 0.25 SD (2+ regions),6,1,0,0.5,-5.5
+58,Network-CMA 0.25 SD (population events),20,31,34,32.5,12.5
+58,Network-CMA 1.25 SD (2+ regions),8,1,0,0.5,-7.5
+58,Network-CMA 1.25 SD (population events),25,37,40,38.5,13.5
+59,HNRS 8/5/3% (2+ regions),6,0,0,0,-6
+59,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+59,Network-CMA 0.25 SD (population events),19,30,33,31.5,12.5
+59,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+59,Network-CMA 1.25 SD (population events),19,31,34,32.5,13.5
+60,HNRS 8/5/3% (2+ regions),9,0,0,0,-9
+60,Network-CMA 0.25 SD (2+ regions),6,0,0,0,-6
+60,Network-CMA 0.25 SD (population events),19,31,31,31,12
+60,Network-CMA 1.25 SD (2+ regions),6,0,0,0,-6
+60,Network-CMA 1.25 SD (population events),20,28,28,28,8
