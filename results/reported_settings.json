@@ -1,0 +1,62 @@
+{
+  "HNRS_stage_cutoffs": [
+    0.01,
+    0.03,
+    0.15
+  ],
+  "Network_CMA_k": 0.75,
+  "meaRtools_Sigma": 45,
+  "logIBEI_peak_search_limit_ms": 100,
+  "HNRS_standard_output_consolidation_ms": 25,
+  "HNRS_native_stage_inputs": "unchanged; consolidation only affects reported catalogs",
+  "primary_reference_master_seeds": [
+    123,
+    456,
+    789
+  ],
+  "reference_stream_rule": "First4 big-endian bytes of SHA256 over compact JSON[hnrs-joint-alpha-v1,master,network_burst,actual generator recording ID,stream]; streams unit-shuffle/source-offset.",
+  "unit_only": {
+    "alpha": 0.01,
+    "window_s": 3,
+    "bin_s": 0.3,
+    "base_seed": 123,
+    "effective_shuffle_seed": 17010698844467267777,
+    "duration_gate": false,
+    "original_RS_consolidation": false
+  },
+  "null_reference_literal_seeds": [
+    123,
+    456,
+    789,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007
+  ],
+  "window_bin_sensitivity": {
+    "windows_s": [
+      10,
+      25,
+      50
+    ],
+    "bins_s": [
+      1.25,
+      2.5,
+      5
+    ],
+    "shuffle_seeds": [
+      123,
+      456,
+      789
+    ],
+    "offset_seed": 123,
+    "minimum_network_regions": 2
+  },
+  "summary_convention": "Seed-average within each recording, then recording means; precision pooled over calls. Three seeds are not independent recordings.",
+  "reference_conditions": "Primary comparators are native population events; secondary region-aware catalogs use existing concurrent two-region attribution; no common added output filter/merge in primary scores.",
+  "nominal_score_caveat": "Candidate tail scores are not calibrated recording-wide significance levels or human false-positive rates.",
+  "reference_scope": "Synthetic-only current manuscript analyses; data generators and human data deliberately excluded."
+}

@@ -1,0 +1,5 @@
+arm,condition,recordings,seeds,exposure_minutes_per_seed,min_total_network_calls,max_total_network_calls,mean_total_network_calls,min_calls_per_min,max_calls_per_min,mean_calls_per_min,seed_total_sample_sd,mean_within_recording_count_sd,recordings_with_any_count_change,mean_within_recording_unit_count_sd,mean_within_recording_regional_count_sd
+window_only,background_only,21,10,87.5,1,5,1.9,0.011428571428571429,0.05714285714285714,0.021714285714285714,1.4491376746189437,0.20345105157637414,11,6.028188369092497,1.327232430464821
+window_only,independent_regional,21,10,87.5,1,1,1.0,0.011428571428571429,0.011428571428571429,0.011428571428571429,0.0,0.0,0,1.529263855918024,0.2970148968371503
+offset_only,background_only,21,10,87.5,1,5,2.6,0.011428571428571429,0.05714285714285714,0.02971428571428572,1.4298407059684812,0.1855359018175699,9,0.0,1.120541456907381
+offset_only,independent_regional,21,10,87.5,1,1,1.0,0.011428571428571429,0.011428571428571429,0.011428571428571429,0.0,0.0,0,0.0,0.3533522959090635

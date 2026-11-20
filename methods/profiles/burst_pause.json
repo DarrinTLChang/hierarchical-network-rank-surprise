@@ -1,10 +1,10 @@
 {
-  "profile_name": "burstpause_stage1_v1",
+  "profile_name": "manuscript_burstpause_stage1_alpha001",
   "profile_version": 1,
   "run_stage1": true,
   "run_region_stage": false,
   "run_network_stage": false,
-  "stage1_alpha": 0.08,
+  "stage1_alpha": 0.01,
   "region_alpha": null,
   "network_alpha": null,
   "stage1_limit": null,

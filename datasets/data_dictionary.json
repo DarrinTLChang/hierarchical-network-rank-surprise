@@ -1,0 +1,46 @@
+{
+  "synthetic_only": true,
+  "dataset_generators_included": false,
+  "input_schema": {
+    "mat_variable": "spikeTime",
+    "fields": [
+      "electrode",
+      "time",
+      "snr",
+      "dataSegmentLength"
+    ],
+    "time_unit": "milliseconds",
+    "dataSegmentLength_unit": "seconds",
+    "empty_cluster_cells_allowed": true,
+    "multiregion_electrode_slots": 50,
+    "multiregion_retained_units": 75,
+    "burst_pause_selected_units": 1
+  },
+  "population_targets": {
+    "authoritative_columns": [
+      "actual_start_ms",
+      "actual_end_ms"
+    ],
+    "padded_score_columns_used": false,
+    "positive_overlap_matching": true,
+    "end_convention": "last planted spike plus0.001ms"
+  },
+  "indexing": {
+    "network_cluster_index": "zero-based in detector native catalogs",
+    "burst_pause_truth_Cluster": "one-based"
+  },
+  "cohorts": {
+    "burst_pause": 50,
+    "network_development": 30,
+    "network_burst": 60,
+    "network_null": 42,
+    "network_shift": 120,
+    "synthetic_example": 1
+  },
+  "burst_pause_storage_note": "Calibration/evaluation directories are inherited storage labels; all50 inputs form the reported fixed single-unit comparison cohort.",
+  "network_burst_note": "The general-detection and network-target tasks use the SAME60 evaluation inputs, not separate cohorts.",
+  "network_null_note": "21 paired backgrounds and independently timed regional inputs; no planted network targets; chance alignment remains possible. Header-only network_ground_truth files are intentional.",
+  "network_shift_note": "Two derived desynchronization realizations per evaluation input; no event-recovery truth assigned to shifted copies. Offset and source-input hashes are in offset_manifest.csv.",
+  "sensitivity_note": "Window/bin and runtime studies reuse evaluation inputs. Duration reporting uses fixed detected memberships, not newly generated inputs.",
+  "simulator_group_labels": "Anatomical-looking electrode names are simulated compatibility labels; public_region in channel maps maps them to R1-R5."
+}

@@ -5,7 +5,7 @@ import hashlib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-IGNORED_DIRECTORIES = {".git", "__pycache__", ".venv", ".pytest_cache", "runs", "validation"}
+IGNORED_DIRECTORIES = {".git", "__pycache__", ".venv", ".pytest_cache", "runs", "validation", "external_dependencies"}
 
 
 def sha(path):

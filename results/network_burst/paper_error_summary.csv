@@ -1,0 +1,17 @@
+task,method,off_event,wrong_class,extra_in_event,split_targets_in_evaluated_stream,merge_predictions_all_truth
+general_events,HNRS,0,0,0,0,0
+general_events,Network-CMA,1,0,133,102,0
+general_events,logIBEI,0,0,0,0,0
+general_events,meaRtools/Otsu,0,0,0,0,0
+network_classification_on,HNRS,0,0,0,0,0
+network_classification_on,Network-CMA,1,203,8,7,0
+network_classification_on,logIBEI,0,33,0,0,0
+network_classification_on,meaRtools/Otsu,0,4,0,0,0
+network_targets_native,HNRS,0,0,0,0,0
+network_targets_native,Network-CMA,1,717,133,10,0
+network_targets_native,logIBEI,0,84,0,0,0
+network_targets_native,meaRtools/Otsu,0,120,0,0,0
+regional_classification_on,HNRS,0,21.666666666666668,35.000000000000007,0,0
+regional_classification_on,Network-CMA,0,0,125,69,0
+regional_classification_on,logIBEI,0,0,0,0,0
+regional_classification_on,meaRtools/Otsu,0,10,0,0,0

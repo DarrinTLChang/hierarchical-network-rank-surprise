@@ -1,9 +1,10 @@
-"""Run the manuscript's native HNRS detector on a spikeTime MAT file.
+"""Run the manuscript HNRS detector and truth-blind output consolidation.
 
 The MAT file must contain a ``spikeTime`` struct with electrode names,
 per-cluster spike times in milliseconds, SNR, and recording duration in
-seconds (``dataSegmentLength``). This command does not score the output
-against ground truth or apply the paper's separate event consolidation.
+seconds (``dataSegmentLength``). Native accepted CSVs are retained unchanged;
+separate reported catalogs use the standard 25-ms consolidation. No ground
+truth is read by this runner. Run one invocation per recording and seed.
 """
 
 from __future__ import annotations
@@ -29,7 +30,21 @@ def _parse_seed(value: str) -> int:
     return seed
 
 
-def _load_profile(mode: str, shuffle_off: bool, seed: int | None):
+def derive_stream_seed(master_seed: int, recording_id: int, stream: str,
+                       dataset_tag: str = "network_burst") -> int:
+    """The manuscript's recording-specific, two-stream SHA-256 contract."""
+    if stream not in {"unit-shuffle", "source-offset"}:
+        raise ValueError("unknown reference stream")
+    if not 0 <= int(master_seed) < 2**32:
+        raise ValueError("master seed must be an unsigned 32-bit integer")
+    payload = json.dumps(["hnrs-joint-alpha-v1", int(master_seed), dataset_tag,
+                          int(recording_id), stream], separators=(",", ":"))
+    return int.from_bytes(sha256(payload.encode()).digest()[:4], "big")
+
+
+def _load_profile(mode: str, shuffle_off: bool, seed: int | None,
+                  *, master_seed=None, recording_id=None, dataset_tag="network_burst",
+                  duration_ms=None):
     from pipeline.detector_profile import DetectorProfile
 
     name = MODES[mode]
@@ -47,6 +62,16 @@ def _load_profile(mode: str, shuffle_off: bool, seed: int | None):
         profile = replace(profile, profile_name=profile_name, win_shuff_enabled=False)
     if seed is not None:
         profile = replace(profile, win_shuff_seed=seed, offset_null_seed=seed)
+    if mode == "network":
+        if recording_id is None or master_seed is None:
+            raise ValueError("network mode requires recording_id and master_seed")
+        profile = replace(profile,
+            win_shuff_seed=derive_stream_seed(master_seed, recording_id, "unit-shuffle", dataset_tag),
+            offset_null_seed=derive_stream_seed(master_seed, recording_id, "source-offset", dataset_tag))
+    if mode != "burst-pause" and duration_ms is not None:
+        profile = replace(profile, win_shuff_auto_from_recording=False,
+                          win_shuff_window_ms=duration_ms / 10,
+                          win_shuff_bin_ms=duration_ms / 100)
     return profile
 
 
@@ -61,12 +86,18 @@ def _native_network(spike_struct, output: Path, profile, bounds, source: str) ->
         burst_in_window,
         infer_region,
         iter_units_from_stats,
-        split_spike_struct_by_side,
+        parse_electrode,
     )
 
     duration_s = (bounds[1] - bounds[0]) / 1000.0
     cache = build_sorted_spike_cache(spike_struct)
-    left, right = split_spike_struct_by_side(spike_struct)
+    # The released synthetic inputs each represent one analyzed hemisphere.
+    # Evaluate that native stream once, rather than rerunning the same input
+    # as both "combined" and "left". This leaves native *_LR.csv identical.
+    sides = {parse_electrode(str(channel.electrode))["side"] for channel in spike_struct}
+    if len(sides) > 1:
+        raise ValueError("analyze hemispheres separately; one input must contain a single side")
+    left = right = np.asarray([], dtype=object)
 
     def iterator(channels, stats):
         return iter_units_from_stats(channels, stats, spike_cache=cache)
@@ -150,6 +181,74 @@ def _native_burst_pause(spike_struct, output: Path, profile, bounds, source: str
     return "complete"
 
 
+def run_recording(input_path, output_dir, *, mode="network", master_seed=123,
+                  recording_id=None, dataset_tag="network_burst", seed=None,
+                  trial=1, shuffle_off=False):
+    """Run one complete input and return reproducibility metadata.
+
+    Network/development runs derive distinct reference streams from the master
+    seed and generator recording ID. Null controls use the same literal seed
+    for both references (default123). Burst-Pause uses literal unit seed123;
+    ``shuffle_off=True`` provides the original-RS-equivalent unit control.
+    Detector configuration uses module globals, so parallelize with processes,
+    not threads. The output directory must be new or empty.
+    """
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(errors="backslashreplace")
+    input_path, output_dir = Path(input_path), Path(output_dir)
+    if seed is not None and not 0 <= int(seed) < 2**32:
+        raise ValueError("literal seed must be an unsigned 32-bit integer")
+    if mode not in MODES:
+        raise ValueError(f"unknown mode: {mode}")
+    if not input_path.is_file():
+        raise ValueError(f"input file does not exist: {input_path}")
+    if output_dir.exists() and (not output_dir.is_dir() or any(output_dir.iterdir())):
+        raise ValueError(f"output directory must be new or empty: {output_dir}")
+    if mode == "network" and seed is not None:
+        raise ValueError("network uses master_seed plus recording_id; seed is for literal-reference modes")
+    if mode == "network" and shuffle_off:
+        raise ValueError("shuffle-off is a unit-only comparison, not the standard network pipeline")
+    if str(HNRS_HOME) not in sys.path:
+        sys.path.insert(0, str(HNRS_HOME))
+    from scipy.io import loadmat
+    from pipeline.observation import stage1_observation_bounds_ms
+    from pipeline.utils import apply_observation_interval
+    from hnrs_catalogs import export_reported_catalogs
+
+    values = loadmat(input_path, squeeze_me=True, struct_as_record=False, variable_names=["spikeTime"])
+    if "spikeTime" not in values:
+        raise ValueError("MAT input must contain a variable named spikeTime")
+    raw = values["spikeTime"]
+    bounds, source = stage1_observation_bounds_ms(raw)
+    clipped = apply_observation_interval(raw, bounds, source)
+    profile = _load_profile(mode, shuffle_off, seed, master_seed=master_seed,
+                            recording_id=recording_id, dataset_tag=dataset_tag,
+                            duration_ms=bounds[1] - bounds[0])
+    output_dir.mkdir(parents=True, exist_ok=True)
+    detector = _native_burst_pause if mode == "burst-pause" else _native_network
+    status = detector(clipped, output_dir, profile, bounds, source)
+    catalogs = export_reported_catalogs(output_dir, trial=int(trial), mode=mode,
+                                       shuffle_off=shuffle_off)
+    with input_path.open("rb") as stream:
+        input_hash = sha256()
+        for block in iter(lambda: stream.read(1024 * 1024), b""):
+            input_hash.update(block)
+    metadata = {
+        "mode": mode, "trial": int(trial), "recording_id": recording_id,
+        "master_seed": int(master_seed) if mode == "network" else None,
+        "literal_seed": int(seed if seed is not None else 123) if mode != "network" else None,
+        "dataset_tag": dataset_tag, "input_sha256": input_hash.hexdigest(),
+        "observation_bounds_ms": list(bounds), "observation_source": source,
+        "detector_profile": profile.to_dict(), "detector_profile_digest": profile.digest,
+        "analysis_status": status, "post_detector_event_consolidation": not shuffle_off,
+        "output_consolidation_gap_ms": 25.0 if not shuffle_off else None,
+        "native_stage_inputs_unchanged": True, "catalog_diagnostics": catalogs,
+    }
+    (output_dir / "params.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
+    return metadata
+
+
 def main(argv: list[str] | None = None) -> int:
     # The upstream pipeline prints arrows/check marks in progress messages.
     # Keep redirected output working on narrow Windows console encodings.
@@ -167,45 +266,27 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--shuffle-off", action="store_true", help="disable Stage-1 window shuffling")
     parser.add_argument(
         "--seed", type=_parse_seed,
-        help="set both the window-shuffle and onset-offset seeds; defaults to the archived profile",
+        help="literal seed for unit/null modes only (default123)",
     )
+    parser.add_argument("--master-seed", type=_parse_seed, default=123,
+                        help="network/development reference master seed (123,456,789 in the manuscript)")
+    parser.add_argument("--recording-id", type=int,
+                        help="generator recording ID, e.g.73001; required for network mode")
+    parser.add_argument("--trial", type=int, default=1, help="display recording number in output catalogs")
+    parser.add_argument("--dataset-tag", default="network_burst", help="seed-contract dataset tag")
     args = parser.parse_args(argv)
     if not args.input.is_file():
         parser.error(f"input file does not exist: {args.input}")
     if args.output.exists() and (not args.output.is_dir() or any(args.output.iterdir())):
         parser.error(f"output directory must be new or empty: {args.output}")
 
-    sys.path.insert(0, str(HNRS_HOME))
-    from scipy.io import loadmat
-    from pipeline.observation import stage1_observation_bounds_ms
-    from pipeline.utils import apply_observation_interval
-
-    values = loadmat(args.input, squeeze_me=True, struct_as_record=False, variable_names=["spikeTime"])
-    if "spikeTime" not in values:
-        parser.error("MAT input must contain a variable named spikeTime")
-    raw = values["spikeTime"]
-    bounds, source = stage1_observation_bounds_ms(raw)
-    clipped = apply_observation_interval(raw, bounds, source)
-    profile = _load_profile(args.mode, args.shuffle_off, args.seed)
-    args.output.mkdir(parents=True, exist_ok=True)
-
-    detector = _native_burst_pause if args.mode == "burst-pause" else _native_network
-    status = detector(clipped, args.output, profile, bounds, source)
-    with args.input.open("rb") as handle:
-        input_hash = sha256()
-        for block in iter(lambda: handle.read(1024 * 1024), b""):
-            input_hash.update(block)
-    metadata = {
-        "mode": args.mode,
-        "input_sha256": input_hash.hexdigest(),
-        "observation_bounds_ms": list(bounds),
-        "observation_source": source,
-        "detector_profile": profile.to_dict(),
-        "detector_profile_digest": profile.digest,
-        "analysis_status": status,
-        "post_detector_event_consolidation": False,
-    }
-    (args.output / "params.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
+    try:
+        metadata = run_recording(args.input, args.output, mode=args.mode, seed=args.seed,
+                                 master_seed=args.master_seed, recording_id=args.recording_id,
+                                 dataset_tag=args.dataset_tag, trial=args.trial, shuffle_off=args.shuffle_off)
+    except (ValueError, OSError) as exc:
+        parser.error(str(exc))
+    status = metadata["analysis_status"]
     print(f"HNRS {args.mode}: {status}; output written to {args.output}")
     return 0 if status in ("complete", "no_analyzable_data") else 1
 

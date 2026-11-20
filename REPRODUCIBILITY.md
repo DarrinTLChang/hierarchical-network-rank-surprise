@@ -1,39 +1,133 @@
-# Reproducibility scope
+# Reproduction workflow and tested scope
 
-## Tested environment
+This release reruns detectors on fixed synthetic inputs. It does not include
+dataset generators or human recordings.
 
-- Python 3.13.3
-- NumPy 2.4.2
-- pandas 3.0.1
-- SciPy 1.17.1
+## Environment
 
-These versions are recorded in `requirements.txt`. No MATLAB installation or dataset generation is needed to run the included Python HNRS runner on the ready-to-use archived inputs.
+- Python 3.13.3, NumPy 2.4.2, pandas 3.0.1, SciPy 1.17.1.
+- Optional plots: Matplotlib 3.10.8 (`requirements-figures.txt`).
+- Comparators: MATLAB R2025b Update 4 with Signal Processing, Statistics and
+  Machine Learning, and Curve Fitting Toolboxes, plus pinned upstream sources.
 
-## What was checked
+Use new or empty output directories. Scripts do not delete old analyses.
+Parallel HNRS execution uses separate processes because detector configuration
+is module-level; do not parallelize it in threads.
 
-1. The HNRS pipeline modules match the archived revised-benchmark implementation. Implementation identifiers are `rs-v3` and `b1-v2` for window shuffling.
-2. Configuration input registries are empty, proxy input is disabled, and output defaults use relative paths. Actual benchmark settings come from `methods/profiles/`.
-3. A native network run on trial 01 completed with 75 retained units, 476 unit detections, 35 regional detections, and seven native network detections. These are native stage counts, not the final consolidated scoring counts.
-4. The burst-pause evaluation trial 001 run completed with 49 detections: TP 49, FP 0, FN 3, F1 0.970297, Jaccard 0.942308. This reproduces its archived HNRS-on reference scores.
-5. Rescoring the supplied final network catalogs reproduces the saved HNRS mean recording-level Jaccard values: 0.936590 for general events, 0.799552 for regional classification, and 0.866667 for network classification.
-6. Release verification checks every supplied file against `MANIFEST.sha256`. The publication review also inspected the MAT schemas and screened textual files for selected private-path and credential patterns.
+## Settings and reporting
 
-These checks are smoke tests and saved-catalog score reproduction, not a rerun of all detectors on every input or a formal confidentiality guarantee.
+Network/development profiles use unit/regional/network cutoffs 1%/3%/15%,
+75th-percentile candidate limits, a minimum of three events, 25-second shuffle
+windows, 2.5-second bins, and a 10-second internal offset bound. Regional
+acceptance permits repeated onsets from one unit; network acceptance requires
+two recording regions. No new three-distinct-unit or maximum onset-spread
+criterion is imposed.
 
-## Archived network settings
+Native stage inputs are unchanged. Standard 25-ms consolidation constructs
+reported catalogs separately. General detection uses pooled regional outputs.
+Exclusive classification retains network events and regional events not sharing
+a native contributing unit burst with an accepted network event. Intrinsic
+duration gates precede consolidation; regional/network duration reporting uses
+contributing unit durations.
 
-The network profile uses nominal unit/regional/network cutoffs of 0.08/0.05/0.03, 75th-percentile candidate interval limits, 25-s shuffle windows, 2.5-s bins, 10-s maximum source-reference offsets, and seed 123. Network acceptance requires at least two region labels. The archived regional profile permits one distinct unit; it should not be described as requiring two distinct units.
+The unit-only protocol uses a 1% cutoff, 3-second windows, 0.3-second bins, base
+seed 123, and no duration gate. RS outputs remain native. HNRS consolidation
+does not change any reported intervals in the 50-input unit benchmark.
 
-Median contributing burst durations remain the duration-gate basis. The network gate is 20 ms–10 s. The native runner does not add the archived 25-ms final catalog consolidation. Consult the JSON profiles for all settings instead of relying on mutable research-workstation defaults.
+## Seed contract
 
-## What this draft does not reproduce end to end
+Primary network/development analyses use master seeds 123/456/789. Each stream
+seed is the first four big-endian bytes of SHA-256 over compact JSON
+`["hnrs-joint-alpha-v1", master_seed, "network_burst", recording_id, stream]`.
+Stream names are `unit-shuffle` and `source-offset`. Recording IDs distinguish
+development from evaluation; they are not the display trial number.
 
-- Dataset-generation code is not included for any benchmark. The exact network, burst-pause, and null inputs and their ground truth are supplied instead. This includes the already-extracted single-unit burst-pause inputs.
-- The native runner does not rebuild the final consolidated general-event/exclusive-classification catalogs from stage CSVs. `score_benchmarks.py network-burst` evaluates the supplied archived catalogs.
-- SPYCODE/logIBEI, the Network-CMA adaptation, and the meaRtools/Otsu implementation/adapters are not included. Their saved synthetic result summaries are not evidence that their runs have been independently reproduced by this package.
-- The independent MATLAB original-RS control is not included.
-- The synthetic-shift tables are provided, but regeneration of their shifted inputs and complete reruns is not automated here.
-- No human analysis is reproduced; neither human input data nor human-derived outputs are supplied.
-- The complete research regression-test suite and computational benchmarking are not bundled.
+Null analyses use literal paired reference seeds 123, 456, 789, and 1001-1007.
+The unit protocol retains its literal base seed and internal unit/bounds hash.
+Window/bin sensitivity uses literal unit seeds 123/456/789 and source-offset
+seed 123, so its default is not the same random-reference realization as the
+primary benchmark.
 
-These gaps must remain explicit. The package is a runnable HNRS detector plus archived synthetic inputs and reference analyses, not yet a one-command reproduction of every manuscript result.
+Average repeated seeds within each recording before recording means and
+bootstrap intervals. Precision is also reported pooled over calls. Repeated
+seeds do not increase the independent sample count.
+
+## Commands
+
+Main evaluation and unit-only commands are in `README.md`. One explicit run:
+
+```sh
+python run_hnrs.py datasets/network_burst/trials/trial01/spikeTime.mat runs/direct-trial01 --recording-id 73001 --master-seed 123 --trial 1
+```
+
+Additional fixed-input analyses:
+
+```sh
+python reproduce.py run-hnrs --cohort network_development --trials 1 --out runs/development-smoke
+python reproduce.py run-hnrs --cohort network_null --trials 1 --seeds 123 --out runs/null-pair-smoke
+python reproduce.py score-runs --runs runs/null-pair-smoke --out runs/null-pair-counts
+python reproduce.py run-hnrs --cohort network_shift --trials 1 --seeds 123 --out runs/shift-smoke
+python reproduce.py score-runs --runs runs/shift-smoke --out runs/shift-counts
+```
+
+Without `--trials`, all cohort inputs are used. Default seeds are three for
+primary network/development/shift, one for unit-only, and ten for null analyses.
+`--condition` selects a named manifest condition. HNRS shift counts require
+positive overlap with 5-245 seconds; null counts use the full interval.
+
+Comparator setup/driver commands are in `comparators/README.md`. Fresh outputs
+include native population events, detected regional support, and settings.
+`score_benchmarks.assign_region_labels` supplies concurrent two-region
+attribution without changing population-event boundaries.
+
+## Matching and objectives
+
+Population matching requires positive overlap against unpadded truth,
+maximizes match count, then summed temporal IoU. Primary network-target scoring
+uses native comparator population calls, including real single-region bursts
+as non-target calls. Secondary anatomical matching is network-first, followed
+by regional predictions against remaining targets. Wrong-class assignments
+are FP for the predicted class and FN for the true class; regional scoring
+assesses class, not exact region identity.
+
+Unit matching instead uses chronological one-to-one matching, maximizing
+match count then summed overlap duration. It does not use IoU as its tie-break.
+
+Primary comparator outputs do not receive HNRS consolidation or added output
+duration filters. Supplied output-processing sensitivity tables describe a
+separate comparison, not the primary native-output scores.
+
+## Parameter selection
+
+The 30 development inputs use the complete protocol including isolated-unit
+challenges. HNRS explored 216 cutoff combinations; each comparator explored
+13 values of one parameter. Tables and selection metadata are supplied in
+`results/parameter_selection/`.
+
+The reported 1%/3%/15% prioritizes general recovery, retaining the network
+cutoff through the documented tie-break with a conditional network sweep as
+supporting evidence. It is not the highest network score across the full grid.
+Search budgets differ, and evaluation recordings informed HNRS development.
+The evaluation is not fully blinded or independent external validation.
+
+## Tested coverage
+
+`VERIFICATION.json` records actual release checks. Fresh native HNRS and
+unit-control outputs are compared with current archives; reference rescoring
+is checked separately from detector execution. Comparator verification names
+the trials/runtime actually tested rather than treating saved catalogs as
+fresh reruns. Tests exercise seeds, matching, and reporting contracts.
+
+Reference tables also cover parameter grids, null seeds, seed-isolation,
+window/bin changes, timing/duration reporting, fixed shifts, and runtime.
+Not every sensitivity grid is freshly rerun for this release. Runtime figures
+are workload-specific and not cross-platform guarantees. No human analysis
+is reproduced.
+
+## Deliberate limitations
+
+Dataset generators are excluded: this is exact-input reproduction, not
+synthetic-data regeneration. Comparator execution requires the specified
+MATLAB environment and upstream dependencies. Rank Surprise cutoffs and null
+rates are not calibrated recording-wide significance levels or estimates of
+human false-positive rates.

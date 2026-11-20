@@ -1,0 +1,71 @@
+dataset_id,job_id,kind,arm,method,condition,Electrode,Cluster,burst_start_ms,burst_end_ms,n_native_members,native_row_indices
+synthetic_example,synthetic_example,synthetic_example,rs,RS,native,microGPi_L_10_CommonFiltered,1,492.61687948266302,504.94513104303002,1,0
+synthetic_example,synthetic_example,synthetic_example,rs,RS,native,microGPi_L_10_CommonFiltered,1,1510.88879708421,1511.36128768863,1,1
+synthetic_example,synthetic_example,synthetic_example,rs,RS,native,microGPi_L_10_CommonFiltered,1,5008.99661894982,5011.9009506701204,1,2
+synthetic_example,synthetic_example,synthetic_example,rs,RS,native,microGPi_L_10_CommonFiltered,1,5493.6365884389897,5497.0865510718104,1,3
+synthetic_example,synthetic_example,synthetic_example,rs,RS,native,microGPi_L_10_CommonFiltered,1,5996.6053209078,5999.7090550409202,1,4
+synthetic_example,synthetic_example,synthetic_example,rs,RS,native,microGPi_L_10_CommonFiltered,1,11011.298107234101,11016.116167612099,1,5
+synthetic_example,synthetic_example,synthetic_example,rs,RS,native,microGPi_L_10_CommonFiltered,1,11517.1611105427,11518.152619692301,1,6
+synthetic_example,synthetic_example,synthetic_example,rs,RS,native,microGPi_L_10_CommonFiltered,1,20512.133238430801,20512.636391784101,1,7
+synthetic_example,synthetic_example,synthetic_example,rs,RS,native,microGPi_L_10_CommonFiltered,1,27025.5959176012,27027.6469167615,1,8
+synthetic_example,synthetic_example,synthetic_example,rs,RS,native,microGPi_L_10_CommonFiltered,1,27992.9383315655,27993.453556953798,1,9
+synthetic_example,synthetic_example,synthetic_example,rs,RS,native,microGPi_L_10_CommonFiltered,1,29509.419012808601,29510.211760253998,1,10
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,492.61687948266297,514.57355233925534,1,0
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,1001.3977673872572,1048.988103801029,1,1
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,1498.7632570661867,1542.0816839368335,1,2
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,2002.7249017951351,2032.2236719863342,1,3
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,2505.2136818424601,2562.7007373270712,1,4
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,2993.6668028572922,3027.2483823733342,1,5
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,3494.5118455862926,3539.2667978656514,1,6
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,4005.8062105155223,4075.170532179613,1,7
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,4524.4608324985938,4558.0003936370467,1,8
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,5005.0209362642927,5019.7607475531868,1,9
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,5493.6365884389861,5533.9707355532209,1,10
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,5996.6053209077972,6026.6600888142139,1,11
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,6503.9633844750979,6532.1968938764412,1,12
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,7070.8618282535172,7087.1561765242486,1,13
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,7498.3134341085834,7559.9204354507647,1,14
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,8000.1765769787917,8048.1701924971749,1,15
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,8498.9262656859482,8529.7038086996345,1,16
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,9007.8361680881353,9067.4312393655673,1,17
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,9492.575649472652,9528.4256111866198,1,18
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,9997.6623185004973,10043.286441162356,1,19
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,10504.751576584356,10544.796770058825,1,20
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,11001.350451846893,11026.210796185362,1,21
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,11498.478796607329,11524.300655828998,1,22
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,12005.116849047272,12034.957720499388,1,23
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,12494.251271381334,12547.656243506017,1,24
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,13004.440258059716,13036.16815368435,1,25
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,13499.859288235515,13561.277373618308,1,26
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,14015.567012743835,14050.628479651619,1,27
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,14518.967521271385,14532.086006131243,1,28
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,15002.179559937624,15037.741734941668,1,29
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,15512.549279643827,15567.74072103937,1,30
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,16003.000997800502,16051.005246637715,1,31
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,16494.44799740037,16543.335592999058,1,32
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,17007.947838932494,17052.505118152789,1,33
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,17496.692711523458,17526.385190220222,1,34
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,18029.912450575848,18040.860458758892,1,35
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,18505.23073232652,18558.129955402834,1,36
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,19001.472175656254,19035.25940477497,1,37
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,19497.474586571683,19533.137290495833,1,38
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,19993.78215031607,20038.202050751694,1,39
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,20498.907677295039,20527.465191890533,1,40
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,20994.8717189177,21057.758564561773,1,41
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,21501.00051426551,21532.535342358045,1,42
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,21992.644642598545,22039.298786313084,1,43
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,22493.356400547324,22544.058475330821,1,44
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,22999.589939864909,23035.917151500693,1,45
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,23492.957274060362,23527.505151058012,1,46
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,24009.778677942344,24029.670044669714,1,47
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,24494.677105538431,24526.850054512801,1,48
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,25003.174639969595,25033.978485630323,1,49
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,25500.045294689473,25540.789224437242,1,50
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,26011.638862405722,26041.243902428683,1,51
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,26497.501541552418,26556.013329092737,1,52
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,26995.926887676669,27030.328537081681,1,53
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,27493.122258115345,27536.931143519454,1,54
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,27992.938331565452,28024.363953945707,1,55
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,28498.250853913258,28521.557823147858,1,56
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,29004.09216571835,29055.21067868733,1,57
+synthetic_example,synthetic_example,synthetic_example,on,HNRS (shuffle on),merge25,microGPi_L_10_CommonFiltered,1,29509.419012808565,29559.937856148059,2,58;59

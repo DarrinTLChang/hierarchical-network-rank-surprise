@@ -6,6 +6,9 @@ runs/
 validation/
 .pytest_cache/
 .DS_Store
+external_dependencies/
+*.asv
+*.mex*
 
 # Secondary safeguards only. The exact release manifest remains authoritative.
 .env
@@ -16,8 +19,7 @@ patient_data/
 **/patient_data/
 human*/
 **/human*/
-*s530*
-*s523*
+**/patient_data_raw/
 *.log
 private_review/
 UPLOAD_REVIEW.txt

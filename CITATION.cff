@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "Please cite this version when using the manuscript reproducibility package."
+type: software
+title: "Hierarchical Network Rank Surprise (HNRS): manuscript reproducibility package"
+version: "2026.11.19"
+authors:
+  - family-names: Chang
+    given-names: Ting-Lun
+  - family-names: Javadzadeh
+    given-names: Sina
+  - family-names: Seyyed Mousavi
+    given-names: S. Alireza
+  - family-names: Sanger
+    given-names: Terence D.
+repository-code: "https://github.com/DarrinTLChang/hierarchical-network-rank-surprise"
+abstract: "Fixed synthetic inputs, detector code, comparator adapters, and scoring workflows for the HNRS manuscript. Synthetic dataset generators and human recordings are excluded."

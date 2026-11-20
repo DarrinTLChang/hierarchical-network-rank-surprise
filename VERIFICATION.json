@@ -1,0 +1,68 @@
+{
+  "version": "2026.11.19",
+  "verified": true,
+  "scope": "Fixed synthetic inputs and current manuscript analysis; no dataset generators or human files",
+  "inputs": {
+    "mat_recordings": 303,
+    "all_input_checksums_verified": true,
+    "burst_pause": 50,
+    "network_development": 30,
+    "network_evaluation": 60,
+    "paired_null_inputs": 42,
+    "fixed_shift_inputs": 120,
+    "synthetic_illustration": 1
+  },
+  "fresh_HNRS_network_validation": {
+    "recordings": 60,
+    "master_seeds": [123, 456, 789],
+    "runs": 180,
+    "native_stage_csvs_compared": 540,
+    "native_dataframes_match_exactly": true,
+    "reported_membership_labels_and_endpoints_match_exactly": true,
+    "score_rows_compared": 720,
+    "maximum_checked_score_difference": 0.0
+  },
+  "fresh_unit_validation": {
+    "recordings": 50,
+    "arms": ["HNRS", "original_RS"],
+    "runs": 100,
+    "event_counts_and_scores_match": true,
+    "maximum_endpoint_difference_ms": 5.093170329928398e-11,
+    "endpoint_comparison_tolerance_ms": 1e-9,
+    "endpoint_note": "Tiny original-RS endpoint differences reflect archived MATLAB CSV precision; no change in detections or scores"
+  },
+  "fresh_comparator_validation": {
+    "recordings": 60,
+    "logIBEI_native_calls": 422,
+    "Network_CMA_native_calls": 1211,
+    "meaRtools_native_calls": 434,
+    "total_native_calls": 2067,
+    "maximum_boundary_difference_ms": 0.0,
+    "support_derived_classifications_match": true,
+    "score_rows_compared": 720,
+    "maximum_checked_score_difference": 0.0,
+    "runtime": "MATLAB R2025b Update 4",
+    "upstream_dependency_commits_verified": true,
+    "network_download_setup_tested": false
+  },
+  "root_workflow_checks": {
+    "all_16_reference_method_task_summaries_recomputed": true,
+    "maximum_reference_summary_difference": 0.0,
+    "all_12_fresh_comparator_summary_rows_recomputed": true,
+    "maximum_fresh_comparator_summary_difference": 0.0,
+    "fresh_network_command_and_scoring_smoke_test": true,
+    "development_recording_command_and_scoring_smoke_test": true,
+    "null_pair_command_and_counting_smoke_test": true,
+    "two_fixed_shift_realizations_and_counting_smoke_test": true,
+    "summary_plot_png_svg_and_means_checked": true,
+    "HNRS_regression_tests_passed": 8,
+    "comparator_contract_tests_passed": 5
+  },
+  "limits": [
+    "Synthetic dataset generation is not included or reproduced",
+    "Human inputs and analyses are not included",
+    "Reference tables for additional sensitivity grids are supplied; not every grid was freshly rerun for this release",
+    "Comparator reruns require MATLAB toolboxes and separately retrieved pinned upstream dependencies",
+    "Checksums establish file identity, not a new license or statistical calibration"
+  ]
+}

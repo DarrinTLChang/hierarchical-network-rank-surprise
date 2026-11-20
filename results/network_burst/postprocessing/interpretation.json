@@ -1,0 +1,33 @@
+{
+  "reported_HNRS_cutoffs": [
+    0.01,
+    0.03,
+    0.15
+  ],
+  "HNRS_reference": "standard25ms consolidated outputs held fixed",
+  "comparator_settings": {
+    "logIBEI_peak_search_limit_ms": 100,
+    "Network_CMA_k": 0.75,
+    "meaRtools_Sigma": 45
+  },
+  "conditions": [
+    "native",
+    "merge25",
+    "duration20to10000",
+    "merge25_duration20to10000"
+  ],
+  "duration_filter_ms_inclusive": [
+    20,
+    10000
+  ],
+  "merge_gap_ms_inclusive": 25,
+  "processing_order_for_both": "consolidation then reported-output duration filter",
+  "classification_context": "secondary region-aware classification, not primary unlabeled native network-target comparison",
+  "fixed_labels": "Anatomical labels assigned before processing and not recomputed from merged membership.",
+  "HNRS_general_Jaccard": 1,
+  "HNRS_network_Jaccard": 0.9398148148148149,
+  "source_HNRS_variants_distributed": false,
+  "paired_table_scope": "Only merge/both archived contrasts validated against the standard fixed HNRS reference; no recalculated uncertainty is claimed.",
+  "native_catalog_reexecution": false,
+  "scope": "current synthetic reference tables only; no human data or generators"
+}

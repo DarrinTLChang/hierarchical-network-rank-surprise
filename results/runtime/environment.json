@@ -1,0 +1,12 @@
+{
+  "hardware": "Intel(R) Xeon(R) Gold 6130 CPU @ 2.10GHz",
+  "python": "3.13.3",
+  "blas_threads": 1,
+  "timed_scope": "quality filtering, native three-stage detection, and native output writing",
+  "excluded": [
+    "MAT loading",
+    "output consolidation",
+    "plotting",
+    "scoring"
+  ]
+}

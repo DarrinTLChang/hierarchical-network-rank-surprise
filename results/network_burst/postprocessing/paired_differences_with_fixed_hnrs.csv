@@ -1,0 +1,55 @@
+condition,task,comparator,metric,hnrs_minus_comparator,ci95_low,ci95_high,convention
+merge25,general_events,logIBEI,jaccard,0.60925925925925939,0.59444444444444455,0.62499999999999989,mean recording Jaccard
+merge25,general_events,logIBEI,precision,0,0,0,pooled counts after within-record HNRS seed averaging
+merge25,general_events,logIBEI,recall,0.60925925925925928,0.59444444444444444,0.625,pooled counts after within-record HNRS seed averaging
+merge25,general_events,Network-CMA,jaccard,0.041020227336016832,0.029301577808156769,0.053646429837219324,mean recording Jaccard
+merge25,general_events,Network-CMA,precision,0.040961709706144211,0.028079710144927494,0.054385964912280649,pooled counts after within-record HNRS seed averaging
+merge25,general_events,Network-CMA,recall,0.0027777777777777679,0,0.0064814814814815325,pooled counts after within-record HNRS seed averaging
+merge25,general_events,meaRtools/Otsu,jaccard,0.5981481481481481,0.56016203703703704,0.63518518518518519,mean recording Jaccard
+merge25,general_events,meaRtools/Otsu,precision,0,0,0,pooled counts after within-record HNRS seed averaging
+merge25,general_events,meaRtools/Otsu,recall,0.5981481481481481,0.56016203703703704,0.63518518518518519,pooled counts after within-record HNRS seed averaging
+merge25_duration20to10000,general_events,logIBEI,jaccard,0.60925925925925939,0.59444444444444455,0.62499999999999989,mean recording Jaccard
+merge25_duration20to10000,general_events,logIBEI,precision,0,0,0,pooled counts after within-record HNRS seed averaging
+merge25_duration20to10000,general_events,logIBEI,recall,0.60925925925925928,0.59444444444444444,0.625,pooled counts after within-record HNRS seed averaging
+merge25_duration20to10000,general_events,Network-CMA,jaccard,0.025109997215260395,0.016715399610136468,0.034046226677805651,mean recording Jaccard
+merge25_duration20to10000,general_events,Network-CMA,precision,0.023572076155938371,0.015525114155251152,0.032374100719424481,pooled counts after within-record HNRS seed averaging
+merge25_duration20to10000,general_events,Network-CMA,recall,0.0027777777777777679,0,0.0064814814814815325,pooled counts after within-record HNRS seed averaging
+merge25_duration20to10000,general_events,meaRtools/Otsu,jaccard,0.59999999999999998,0.56111111111111123,0.63703703703703718,mean recording Jaccard
+merge25_duration20to10000,general_events,meaRtools/Otsu,precision,0,0,0,pooled counts after within-record HNRS seed averaging
+merge25_duration20to10000,general_events,meaRtools/Otsu,recall,0.59999999999999998,0.56111111111111112,0.63703703703703707,pooled counts after within-record HNRS seed averaging
+merge25,regional_classification_on,logIBEI,jaccard,0.88933455433455433,0.86423962148962141,0.91247565628815608,mean recording Jaccard
+merge25,regional_classification_on,logIBEI,precision,-0.07296137339055786,-0.093198992443324968,-0.053461875547765159,pooled counts after within-record HNRS seed averaging
+merge25,regional_classification_on,logIBEI,recall,0.9555555555555556,0.94166666666666665,0.96944444444444444,pooled counts after within-record HNRS seed averaging
+merge25,regional_classification_on,Network-CMA,jaccard,0.27506082561229611,0.25157035121741006,0.29816391492494426,mean recording Jaccard
+merge25,regional_classification_on,Network-CMA,precision,0.040831730057718008,0.0083878871312579994,0.072592950275037177,pooled counts after within-record HNRS seed averaging
+merge25,regional_classification_on,Network-CMA,recall,0.28611111111111109,0.26944444444444449,0.30277777777777781,pooled counts after within-record HNRS seed averaging
+merge25,regional_classification_on,meaRtools/Otsu,jaccard,0.77597985347985365,0.72453510378510377,0.82329067460317462,mean recording Jaccard
+merge25,regional_classification_on,meaRtools/Otsu,precision,0.0064037059745215563,-0.040186793724866124,0.056899570787207442,pooled counts after within-record HNRS seed averaging
+merge25,regional_classification_on,meaRtools/Otsu,recall,0.83888888888888891,0.79166666666666663,0.88194444444444442,pooled counts after within-record HNRS seed averaging
+merge25,network_classification_on,logIBEI,jaccard,0.072056878306878305,0.041997354497354519,0.10148809523809525,mean recording Jaccard
+merge25,network_classification_on,logIBEI,precision,0.088948787061994605,0.064425770308123242,0.11311172371803543,pooled counts after within-record HNRS seed averaging
+merge25,network_classification_on,logIBEI,recall,0.00092592592592588563,-0.024074074074073918,0.025925925925925908,pooled counts after within-record HNRS seed averaging
+merge25,network_classification_on,Network-CMA,jaccard,0.29671596921596927,0.27188176406926406,0.31985732323232324,mean recording Jaccard
+merge25,network_classification_on,Network-CMA,precision,0.36170212765957444,0.34782608695652173,0.375,pooled counts after within-record HNRS seed averaging
+merge25,network_classification_on,Network-CMA,recall,-0.06018518518518523,-0.08333333333333337,-0.039814814814814747,pooled counts after within-record HNRS seed averaging
+merge25,network_classification_on,meaRtools/Otsu,jaccard,0.1037037037037037,0.06157407407407408,0.14630787037037024,mean recording Jaccard
+merge25,network_classification_on,meaRtools/Otsu,precision,0.012987012987012991,0,0.032051282051282048,pooled counts after within-record HNRS seed averaging
+merge25,network_classification_on,meaRtools/Otsu,recall,0.095370370370370328,0.053703703703703587,0.13796296296296295,pooled counts after within-record HNRS seed averaging
+merge25_duration20to10000,regional_classification_on,logIBEI,jaccard,0.88933455433455433,0.86423962148962141,0.91247565628815608,mean recording Jaccard
+merge25_duration20to10000,regional_classification_on,logIBEI,precision,-0.07296137339055786,-0.093198992443324968,-0.053461875547765159,pooled counts after within-record HNRS seed averaging
+merge25_duration20to10000,regional_classification_on,logIBEI,recall,0.9555555555555556,0.94166666666666665,0.96944444444444444,pooled counts after within-record HNRS seed averaging
+merge25_duration20to10000,regional_classification_on,Network-CMA,jaccard,0.22539377289377291,0.19883379120879122,0.25123061660561657,mean recording Jaccard
+merge25_duration20to10000,regional_classification_on,Network-CMA,precision,-0.019389944819129257,-0.046686770337821946,0.00755315788576207,pooled counts after within-record HNRS seed averaging
+merge25_duration20to10000,regional_classification_on,Network-CMA,recall,0.26388888888888884,0.24583333333333335,0.28194444444444444,pooled counts after within-record HNRS seed averaging
+merge25_duration20to10000,regional_classification_on,meaRtools/Otsu,jaccard,0.77875763125763142,0.726858134920635,0.82585775335775335,mean recording Jaccard
+merge25_duration20to10000,regional_classification_on,meaRtools/Otsu,precision,0.0076837878997647602,-0.039505745687986753,0.058990141904326075,pooled counts after within-record HNRS seed averaging
+merge25_duration20to10000,regional_classification_on,meaRtools/Otsu,recall,0.84166666666666667,0.79440972222222228,0.88472222222222219,pooled counts after within-record HNRS seed averaging
+merge25_duration20to10000,network_classification_on,logIBEI,jaccard,0.072056878306878305,0.041997354497354519,0.10148809523809525,mean recording Jaccard
+merge25_duration20to10000,network_classification_on,logIBEI,precision,0.088948787061994605,0.064425770308123242,0.11311172371803543,pooled counts after within-record HNRS seed averaging
+merge25_duration20to10000,network_classification_on,logIBEI,recall,0.00092592592592588563,-0.024074074074073918,0.025925925925925908,pooled counts after within-record HNRS seed averaging
+merge25_duration20to10000,network_classification_on,Network-CMA,jaccard,0.27707671957671959,0.24985449735449744,0.30275198412698406,mean recording Jaccard
+merge25_duration20to10000,network_classification_on,Network-CMA,precision,0.34306569343065696,0.32710280373831779,0.3571428571428571,pooled counts after within-record HNRS seed averaging
+merge25_duration20to10000,network_classification_on,Network-CMA,recall,-0.06018518518518523,-0.08333333333333337,-0.039814814814814747,pooled counts after within-record HNRS seed averaging
+merge25_duration20to10000,network_classification_on,meaRtools/Otsu,jaccard,0.1037037037037037,0.06157407407407408,0.14630787037037024,mean recording Jaccard
+merge25_duration20to10000,network_classification_on,meaRtools/Otsu,precision,0.012987012987012991,0,0.032051282051282048,pooled counts after within-record HNRS seed averaging
+merge25_duration20to10000,network_classification_on,meaRtools/Otsu,recall,0.095370370370370328,0.053703703703703587,0.13796296296296295,pooled counts after within-record HNRS seed averaging

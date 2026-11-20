@@ -1,0 +1,79 @@
+{
+  "development_recordings": 30,
+  "evaluation_recordings": 60,
+  "evaluation_used_for_parameter_selection": false,
+  "primary_objective": "mean general-detection Jaccard",
+  "HNRS": {
+    "config": "u01_r03_n15",
+    "unit_alpha": 0.01,
+    "regional_alpha": 0.03,
+    "network_alpha": 0.15,
+    "development_jaccard": 0.9994152046783625,
+    "tied_best": [
+      "u01_r03_n15",
+      "u01_r05_n15",
+      "u01_r03_n12",
+      "u01_r05_n12",
+      "u01_r03_n08",
+      "u01_r05_n08",
+      "u01_r03_n05",
+      "u01_r03_n03",
+      "u01_r05_n05",
+      "u01_r03_n01",
+      "u01_r05_n03",
+      "u01_r05_n01"
+    ],
+    "baseline_distance_percentage_points": 9
+  },
+  "comparators": {
+    "logIBEI": {
+      "selected": 100.0,
+      "baseline": 100.0,
+      "development_jaccard": 0.3907407407407408,
+      "tied_best": [
+        20.0,
+        30.0,
+        40.0,
+        50.0,
+        60.0,
+        75.0,
+        100.0,
+        125.0,
+        150.0,
+        200.0,
+        250.0,
+        350.0,
+        500.0
+      ]
+    },
+    "Network-CMA": {
+      "selected": 0.75,
+      "baseline": 0.25,
+      "development_jaccard": 0.8956878031706405,
+      "tied_best": [
+        0.75
+      ]
+    },
+    "meaRtools/Otsu": {
+      "selected": 45.0,
+      "baseline": 50.0,
+      "development_jaccard": 0.4425925925925927,
+      "tied_best": [
+        45.0
+      ]
+    }
+  },
+  "hnrs_tie_break": "Smallest L1 distance in percentage points to reference8/1/15, then ascending unit/regional/network tuple.",
+  "hnrs_network_profile_role": "Conditional network-classification profile at fixed1/3 supplies exploratory support for retained15; not a separate sequential selection rule.",
+  "evaluation_limitation": "Evaluation recordings informed HNRS development; not independent external validation.",
+  "hnrs_grid_size": 216,
+  "grid_values_percent": [
+    1,
+    3,
+    5,
+    8,
+    12,
+    15
+  ],
+  "comparator_settings_each": 13
+}

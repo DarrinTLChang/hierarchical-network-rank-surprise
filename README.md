@@ -1,69 +1,145 @@
 # Hierarchical Network Rank Surprise (HNRS)
 
-HNRS detects bursting in three linked stages: individual units, predefined recording regions, and networks spanning regions. This repository contains the archived HNRS implementation, benchmark-specific settings, simulated datasets with ground truth, and reference results for the synthetic analyses.
+**Manuscript reproducibility package, version 2026.11.19.** This repository
+contains HNRS code, fixed synthetic inputs and ground truth, comparator
+adapters, analysis settings, scoring workflows, and current reference results.
+Synthetic dataset generators are deliberately excluded. The detector's internal
+surrogate-reference procedures remain included as part of HNRS.
 
-## Repository layout
+## Package contents
 
-```text
-methods/hnrs/             HNRS source, sanitized configuration, retained GPL notice
-methods/profiles/         Exact network, burst-pause, and network-null settings
-datasets/network_burst/   60 simulated multiregion recordings and ground truth
-datasets/burst_pause/     50 simulated single-unit recordings and ground truth
-datasets/network_null/    21 pairs of simulated network-null recordings
-results/                 Synthetic reference scores, timing, null counts, shift tables
-run_hnrs.py              Run native HNRS stages on a spikeTime MAT input
-score_benchmarks.py      Rescore supplied final network catalogs or a unit-stage run
-verify_release.py        Verify the exact release file list and checksums
-DATA.md                  Dataset provenance, formats, and analysis conventions
-REPRODUCIBILITY.md       Tested commands and limits of the included workflows
-THIRD_PARTY.md           Attribution and licensing scope
-MANIFEST.sha256          Per-file checksums
-```
+- `methods/hnrs/`: frozen HNRS engine with retained GPL notices.
+- `methods/profiles/`: current network, unit-only, and null-control profiles.
+- `datasets/recording_manifest.csv`: portable input paths, identities, and hashes.
+- `datasets/`: 50 Burst-Pause, 30 development, 60 multiregion evaluation,
+  42 paired-null inputs, 120 fixed shifted inputs, and one synthetic illustration.
+- `comparators/`: MATLAB adapters and pinned upstream dependency setup.
+- `results/`: synthetic reference catalogs, scores, and sensitivity tables.
+- `reproduce.py`: batch HNRS execution, fresh-output scoring, and reference rescoring.
+- `score_benchmarks.py`: matching, anatomical attribution, and seed-aware summaries.
+- `DATA.md`, `REPRODUCIBILITY.md`, `THIRD_PARTY.md`: formats, tested scope, attribution.
+- `MANIFEST.sha256`, `verify_release.py`: exact release-file verification.
 
-## Included data
-
-All 152 bundled recordings are simulated, not patient recordings:
-
-| Dataset | Recordings | Duration | Contents |
-| --- | ---: | ---: | --- |
-| Synthetic Regional–Network Burst Benchmark | 60 | 250 s each | 75 units across five groups, 12 regional and six multiregion targets, plus isolated single-unit challenges |
-| Burst-Pause Benchmark | 50 | 30 s each | One selected simulated unit per recording with planted burst intervals |
-| Network-null controls | 42, organized as 21 pairs | 250 s each | Background only, paired with the same simulated background plus independently timed regional bursts |
-
-The null release includes **all archived source IDs 1–21**, including ID 8. The corresponding table contains 420 analyses: two conditions × 21 recordings × ten internal surrogate seeds. These are repeated analyses of 42 inputs, not 420 independent recordings.
-
-Anatomical-looking names in the MAT files are simulator labels. No human sEEG recordings, patient metadata, human-derived detections or tables, human rasters, or human interactive figures are included. See [DATA.md](DATA.md) for the simulation lineage and exact file meanings.
+All 303 MAT inputs are simulated. No human recordings, patient metadata,
+human-derived catalogs or figures, dataset generators, or private workstation
+files are included. Anatomical-looking channel strings are simulator labels.
 
 ## Quick start
 
-Tested with Python 3.13.3. From this repository's root:
+Tested with Python 3.13.3 and the versions in `requirements.txt`. Run commands
+from the repository root and choose new or empty output directories.
 
 ```sh
 python -m pip install -r requirements.txt
 python verify_release.py
-python run_hnrs.py datasets/network_burst/trials/trial01/spikeTime.mat runs/network-trial01
-python run_hnrs.py datasets/burst_pause/evaluation/trial001/spikeTime.mat runs/burst-pause-trial001 --mode burst-pause
+python reproduce.py run-hnrs --cohort network_burst --trials 1 --seeds 123 --out runs/hnrs-smoke
+python reproduce.py score-runs --runs runs/hnrs-smoke --out runs/hnrs-smoke-scores
 ```
 
-Use a new or empty output directory. To run a null input:
+This runs the detector, constructs the standard reported catalogs, and scores
+those **fresh outputs** against unpadded truth. Native stage inputs remain
+unchanged; reported HNRS catalogs use standard 25-ms consolidation.
+
+## Main HNRS evaluation
 
 ```sh
-python run_hnrs.py datasets/network_null/background_only/trials/trial01/spikeTime.mat runs/null-trial01 --mode network-null --seed 123
+python reproduce.py run-hnrs --cohort network_burst --jobs 4 --out runs/hnrs-network
+python reproduce.py score-runs --runs runs/hnrs-network --out runs/hnrs-network-scores
 ```
 
-For the unit-stage ranking-reference ablation, add `--shuffle-off` to a burst-pause run. Outputs include stage detections, effective settings, and the input checksum. No ground truth is read by the detector.
+Default network seeds are 123, 456, and 789, with two separately derived
+reference streams for each recording. Expected mean event Jaccards are
+**1.000** for general detection, **0.934** for secondary regional-only
+classification, and **0.940** for network targets. Scores average seeds
+within recording; three seeds are not three independent recordings.
 
-## Scoring
+## Unit-only comparison
 
 ```sh
-python score_benchmarks.py burst-pause runs/burst-pause-trial001/hnrs_on_unit_bursts.csv datasets/burst_pause/evaluation/trial001/unit_ground_truth.csv
-python score_benchmarks.py network-burst datasets/network_burst
+python reproduce.py run-hnrs --cohort burst_pause --jobs 4 --out runs/hnrs-unit
+python reproduce.py score-runs --runs runs/hnrs-unit --out runs/hnrs-unit-scores
+python reproduce.py run-hnrs --cohort burst_pause --shuffle-off --jobs 4 --out runs/rs-unit
+python reproduce.py score-runs --runs runs/rs-unit --out runs/rs-unit-scores
 ```
 
-The network command rescores the supplied **final HNRS catalogs**. It does not recreate them from a new native run. The archived network analysis used an additional 25-ms HNRS event consolidation and catalog-construction step. The quick-start runner outputs native stages without that final construction. Dataset generators and comparator source/adapters are not bundled; the actual archived datasets are provided ready to use. These boundaries are detailed in [REPRODUCIBILITY.md](REPRODUCIBILITY.md).
+Expected mean F1/Jaccard are approximately **0.892/0.824** for HNRS and
+**0.348/0.215** for original RS. The unit-only protocol disables duration
+gates. RS retains native intervals; HNRS consolidation changes none of
+these 50 benchmark inputs' reported intervals.
 
-## Credits and licensing
+## Rescore all methods without MATLAB
 
-HNRS builds on original Rank Surprise: [Gourévitch and Eggermont (2007)](https://doi.org/10.1016/j.jneumeth.2006.09.024). The detector retains the original credit to [Subhasis Ray's MATLAB-to-Python port](https://gist.github.com/subhacom/4336215) and its GPL-3.0-or-later notice. The license text is in `methods/hnrs/COPYING`. See [THIRD_PARTY.md](THIRD_PARTY.md).
+```sh
+python reproduce.py score-reference --out runs/reference-scores
+```
 
-No separate reuse license is asserted for the bundled datasets. Public redistribution and dataset-license terms require approval from their rights holder before this draft is published.
+This recomputes all 16 current method/task summaries from supplied catalogs.
+It **does not rerun** the detectors.
+
+## Rerun comparators
+
+The adapters use logIBEI 100 ms, Network-CMA `k=0.75`, and meaRtools Sigma 45.
+Primary comparator population outputs retain their native acceptance and
+reporting rules; no HNRS consolidation/duration rules are silently added.
+
+```sh
+python comparators/setup_external.py
+python comparators/setup_external.py --verify-only
+```
+
+Then run MATLAB from this repository's root:
+
+```matlab
+addpath('comparators/matlab');
+run_comparators('datasets/network_burst', 'runs/comparators');
+```
+
+Then score those fresh adapter outputs:
+
+```sh
+python reproduce.py score-comparators --runs runs/comparators --out runs/comparator-scores
+```
+
+Comparator reruns require MATLAB and Signal Processing, Statistics and Machine
+Learning, and Curve Fitting Toolboxes. The tested release is R2025b Update 4.
+Upstream dependencies stay in gitignored `external_dependencies/`; they are
+not redistributed in this package. See `comparators/README.md` and
+`THIRD_PARTY.md`.
+
+## Optional summary plots
+
+```sh
+python -m pip install -r requirements-figures.txt
+python plot_results.py --scores results/network_burst/recording_scores.csv --out runs/plots
+```
+
+This makes a convenience PNG/SVG summary from the selected score table and
+exports its plotted means. It is not a new detector run or a reproduction of
+every manuscript figure's layout.
+
+## Interpretation
+
+General recovery and network-target selectivity are different objectives.
+In the primary network-target comparison, a native population event matching
+a true single-region burst is a non-target call, not necessarily spurious
+activity. The secondary region-aware comparison adds concurrent two-region
+attribution without adding an HNRS-style three-onset gate to comparators.
+
+Event Jaccard is `TP/(TP+FP+FN)`, not temporal IoU. Rank Surprise candidate
+scores and null-call rates do not establish recording-wide error control or
+human false-positive rates. Evaluation inputs had informed HNRS development;
+they are not independent external validation.
+
+The package supports exact-input reruns, not regeneration of synthetic data
+or reproduction of restricted human analyses. See `REPRODUCIBILITY.md`.
+
+## Citation and licensing
+
+Version information is in `VERSION` and `CITATION.cff`. HNRS builds on
+[Gourevitch and Eggermont (2007)](https://doi.org/10.1016/j.jneumeth.2006.09.024).
+The detector retains Subhasis Ray's Python-port credit and GPL-3.0-or-later
+notice. Applicable license texts and comparator source attribution are in
+`THIRD_PARTY.md`.
+
+No new blanket license is assigned to the datasets or every repository file.
+Contact the corresponding author about dataset reuse permissions.
